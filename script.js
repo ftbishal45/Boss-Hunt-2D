@@ -413,3 +413,60 @@ function playAttackSound() {
 function playZombieDeathSound() {
     zombieDeathSound.play();
 }
+// Sample code to display a banner ad
+function showBannerAd() {
+    const bannerAd = document.createElement('div');
+    bannerAd.id = 'bannerAd';
+    bannerAd.style.position = 'fixed';
+    bannerAd.style.width = '100%';
+    bannerAd.style.height = '60px'; // adjust as needed
+    bannerAd.style.bottom = '0'; // or 'top' for top placement
+    bannerAd.style.backgroundColor = 'rgba(255, 255, 255, 0.8)'; // semi-transparent
+    bannerAd.innerHTML = '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkUU_xWvEtjqjMN1PPYO3xEmmsS-KGJ-6J9Q&s" alt="Banner Ad" style="width: 100%; height: auto;">';
+    document.body.appendChild(bannerAd);
+
+    // Optionally, add an event listener for clicks
+    bannerAd.addEventListener('click', () => {
+        window.open('https://advertiser.com', '_blank');
+    });
+}
+
+// Call this function when the game starts
+showBannerAd();
+function showInterstitialAd() {
+    // Assuming you've already loaded the ad in advance
+    const interstitialAd = document.createElement('div');
+    interstitialAd.id = 'interstitialAd';
+    interstitialAd.style.position = 'fixed';
+    interstitialAd.style.top = '-50';
+    interstitialAd.style.left = '60';
+    interstitialAd.style.width = '50%';
+    interstitialAd.style.height = '50%';
+    interstitialAd.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+    interstitialAd.innerHTML = '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkUU_xWvEtjqjMN1PPYO3xEmmsS-KGJ-6J9Q&s" alt="Interstitial Ad" style="width: 100%; height: auto;">';
+
+    document.body.appendChild(interstitialAd);
+
+    // Close ad on click
+    interstitialAd.addEventListener('click', () => {
+        document.body.removeChild(interstitialAd);
+    });
+
+    // Optionally, set a timer to auto-close after a few seconds
+    setTimeout(() => {
+        if (document.body.contains(interstitialAd)) {
+            document.body.removeChild(interstitialAd);
+        }
+    }, 3000); // adjust timing as needed
+}
+
+
+// Call this function at strategic points, e.g., at game over or level transition
+showInterstitialAd();
+function showPopunderAd() {
+    // This should be triggered by an event, like clicking a button or after completing a level
+    window.open('https://advertiser.com', '_blank');
+}
+
+// Call this function when the player performs a specific action, like clicking a button
+someButton.addEventListener('click', showPopunderAd);
